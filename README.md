@@ -91,11 +91,9 @@ It increases the white region in the image or size of foreground object increase
 * It compares the template image against the source image by sliding it, one pixel at a time and then comparing it at each location. Multiple images of the same template could be used to reduce no. of false positives.
 
 ### <a name="GrabCut_Foreground_Extraction"></a>GrabCut Foreground Extraction
-* IMREAD_COLOR loads the image in the BGR 8-bit format.
-* IMREAD_UNCHANGED loads the image as is (including the alpha channel if present)
-* IMREAD_GRAYSCALE loads the image as an intensity one
-* cv2.imshow is used to show the image.
-* cv2.waitkey() is used to determine how long should it wait for a user input. It accepts a single parameter in milliseconds. Zero means to wait forever.
+* Here, we load in the image, create a mask, specify the background and foreground model and then define rect, the rectangle which encases the main object.
+* Then we use cv2.grabCut, which takes the input image, then the mask, then the rectangle for our main object, the background model, foreground model, the amount of iterations to run, and the mode as parameters.
+* Then, the mask is changed so that all 0 and 2 pixels are converted to the background, where the 1 and 3 pixels are now the foreground. Then, we multiply with the input image, and we get our final result.
 
 ### <a name="GrabCut_Foreground_Extraction"></a>GrabCut Foreground Extraction
 * IMREAD_COLOR loads the image in the BGR 8-bit format.
