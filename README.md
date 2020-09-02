@@ -115,12 +115,12 @@ The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blo
 * Then we use cv2.grabCut, which takes the input image, then the mask, then the rectangle for our main object, the background model, foreground model, the amount of iterations to run, and the mode as parameters.
 * Then, the mask is changed so that all 0 and 2 pixels are converted to the background, where the 1 and 3 pixels are now the foreground. Then, we multiply with the input image, and we get our final result.
 
-The code can be found [here]
+The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/grab%20cut%20foreground%20extraction%20opencv%20python%20tutorials.py)
 
 ### <a name="Corner_Detection"></a>Corner Detection
 * First we load the image, convert to gray, then to float32. Next, we detect corners with the cv2.goodFeaturesToTrack() function. The parameters here are the image, max corners to detect, quality, and minimum distance between corners. Then, we iterate through each corner, making a circle at each.
 
-The code can be found [here]
+The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/corner%20detection%20opencv%20python%20tutorial.py)
 
 ### <a name="Feature_Matching"></a>Feature Matching (Homography) Brute Force
 * It is done by the function bf.match().
@@ -137,7 +137,7 @@ The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blo
 ### <a name="Haar_Cascade_Object_Detection_Face_&_Eye"></a>Haar Cascade Object Detection Face & Eye
 * Haar Cascade Classification is basically a machine learning based approach where a cascade function is trained from a lot of images both positive and negative. Based on the training it is then used to detect the objects in the other images. Usually, they use huge individual .xml files with a lot of feature sets and each xml corresponds to a very specific type of use case.
 * First, we are finding faces, their sizes, drawing rectangles, and noting the ROI using a loop and then we sketch out more rectangles for the eyes.
-The code can be found [here] (https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/haar%20cascade%20object%20detection%20face%20and%20eye%20opencv%20python%20tutorial.py)
+The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/haar%20cascade%20object%20detection%20face%20and%20eye%20opencv%20python%20tutorial.py)
 
 
 ### <a name="Making_your_own_Haar_Cascade"></a>Making your own Haar Cascade
