@@ -84,13 +84,11 @@ It increases the white region in the image or size of foreground object increase
 * 
 ### <a name="Canny_Edge_Detection_and_Gradients"></a>Canny Edge Detection and Gradients
 * In Canny Edge Detection, first, it performs noise reduction on the image. Then, it uses the first derivative at each pixel to find edges. The logic behind this is that the point where an edge exists, there is an abrupt intensity change, which causes a spike in the first derivative's value, hence making that pixel an 'edge pixel'. Finally, it performs hysteresis thresholding making use of two threshold values instead of one. The reason behind that is, if the threshold value is too high, we might miss some actual edges (true negatives) and if the value is too low, we would get a lot of points classified as edges that actually are not edges (false positives). One threshold value is set high, and one is set low. All points which are above the 'high threshold value' are identified as edges, then all points which are above the low threshold value but below the high threshold value are evaluated; the points which are close to, or are neighbors of, points which have been identified as edges, are also identified as edges and the rest are discarded.
+* It is done using cv2.Canny().
 
 ### <a name="Template_Matching"></a>Template Matching
-* IMREAD_COLOR loads the image in the BGR 8-bit format.
-* IMREAD_UNCHANGED loads the image as is (including the alpha channel if present)
-* IMREAD_GRAYSCALE loads the image as an intensity one
-* cv2.imshow is used to show the image.
-* cv2.waitkey() is used to determine how long should it wait for a user input. It accepts a single parameter in milliseconds. Zero means to wait forever.
+* We use Template Matching to find identical regions of an image that match a template we provide, given a certain threshold. It is done using cv2.matchTemplate().
+* It compares the template image against the source image by sliding it, one pixel at a time and then comparing it at each location. Multiple images of the same template could be used to reduce no. of false positives.
 
 ### <a name="GrabCut_Foreground_Extraction"></a>GrabCut Foreground Extraction
 * IMREAD_COLOR loads the image in the BGR 8-bit format.
