@@ -18,7 +18,7 @@
 * [MOG Background Reduction](#MOG_Background_Reduction)
 * [Haar Cascade Object Detection Face & Eye](#Haar_Cascade_Object_Detection_Face_&_Eye)
 * [Making your own Haar Cascade](#Making_your_own_Haar_Cascade)
-* [Haar Cascade For Image and Video Object Classification](#Haar Cascade For Image and Video Object Classification)
+* [Haar Cascade For Image and Video Object Classification](#Haar_Cascade_For_Image_and_Video_Object_Classification)
 
 
 The goal is to follow along the sentdex's "Image analysis using opencv" tutorials and document the corresponding codes.
@@ -128,31 +128,29 @@ The code can be found [here]
 
 The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/feauture%20matching%20brute%20force%20opencv%20python%20tutorial.py)
 
-### <a name="[MOG_Background_Reduction"></a>MOG Background Reduction
+### <a name="MOG_Background_Reduction"></a>MOG Background Reduction
 * Here, we extract the moving foreground from the static background.
 * cv2.createBackgroundSubtractorMOG2() is used to create the foreground mask.
 
 The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/MOG%20background%20reduction.py)
 
-### <a name="Feature_Matching"></a>Feature Matching (Homography) Brute Force
-* It is done by the function bf.match().
-* First, we defined our two images and the detector. Then, we find the key points and their descriptors with the orb detector. Then we create the bf match object. And then we create matches of the descriptors and sort them based on their distances.
-
-The code can be found [here]
-
-
-### <a name="Feature_Matching"></a>Feature Matching (Homography) Brute Force
-* It is done by the function bf.match().
-* First, we defined our two images and the detector. Then, we find the key points and their descriptors with the orb detector. Then we create the bf match object. And then we create matches of the descriptors and sort them based on their distances.
-
-The code can be found [here]
+### <a name="Haar_Cascade_Object_Detection_Face_&_Eye"></a>Haar Cascade Object Detection Face & Eye
+* Haar Cascade Classification is basically a machine learning based approach where a cascade function is trained from a lot of images both positive and negative. Based on the training it is then used to detect the objects in the other images. Usually, they use huge individual .xml files with a lot of feature sets and each xml corresponds to a very specific type of use case.
+* First, we are finding faces, their sizes, drawing rectangles, and noting the ROI using a loop and then we sketch out more rectangles for the eyes.
+The code can be found [here] (https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/haar%20cascade%20object%20detection%20face%20and%20eye%20opencv%20python%20tutorial.py)
 
 
-### <a name="Feature_Matching"></a>Feature Matching (Homography) Brute Force
-* It is done by the function bf.match().
-* First, we defined our two images and the detector. Then, we find the key points and their descriptors with the orb detector. Then we create the bf match object. And then we create matches of the descriptors and sort them based on their distances.
+### <a name="Making_your_own_Haar_Cascade"></a>Making your own Haar Cascade
+* First, we define a function to read .xml files and store resized grayscale images of both positive and negetive pictures in a seperate folder. Then we remove the unwanted pictures by defining another function. Finally we create a descripter file for the negetive images and then proceed with the training part.
+* For training, we move the neg folder and the descriptor file to the server and then create positive and negetive samples based on an image we provide. Using this we output an info list and all the newly generated images on seperate directories. More no. of stages run, higher is the accuracy.
 
-The code can be found [here]
+The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/making%20your%20own%20haar%20cascade%20opencv%20python%20tutorial.py)
+
+
+### <a name="Haar_Cascade_For_Image_and_Video_Object_Classification"></a>Haar Cascade For Image and Video Object Classification
+* Finally, we write a code using the eye, face and watch cascades. it captures the recording from webcam and detects the eyes, faces and watches.
+
+The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blob/master/opencv/codes/haar%20cascade%20for%20image%20and%20video%20classification%20opencv%20python%20tutorial.py)
 
 
 
