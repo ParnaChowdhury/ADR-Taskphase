@@ -76,18 +76,14 @@ The code can be found [here](https://github.com/ParnaChowdhury/ADR-Taskphase/blo
 * In the Gaussian and simple filters, the filtered value for the central element can be a value which may not exist in the original image. However this is not the case in median filtering, since the central element is always replaced by some pixel value in the image. therefore, median blurring is more effective in reducing noise.
 
 ### <a name="Morphological_Transformations"></a>Morphological Transformations
-* IMREAD_COLOR loads the image in the BGR 8-bit format.
-* IMREAD_UNCHANGED loads the image as is (including the alpha channel if present)
-* IMREAD_GRAYSCALE loads the image as an intensity one
-* cv2.imshow is used to show the image.
-* cv2.waitkey() is used to determine how long should it wait for a user input. It accepts a single parameter in milliseconds. Zero means to wait forever.
-
+* cv2.erode() is used for erosion. It erodes away the boundaries of foreground object. basically, A kernel is convolved with the image. A pixel in the original image (either 1 or 0) will be considered 1 only if all the pixels under the kernel is 1, otherwise it is made zero (eroded). Thus all the pixels near boundary will be discarded depending upon the size of kernel. So the thickness or size of the foreground object decreases or simply white region decreases in the image.
+* cv2.dilate()  is used for dilation. It is the oppsite of erosion. Here, a pixel element in the original image is ‘1’ if atleast one pixel under the kernel is ‘1’.
+It increases the white region in the image or size of foreground object increases.
+* Opening is done by cv2.MORPH_OPEN. It is erosion followed by dilation. Opening eliminates thin protrusions and salt noise
+* Closing is done by cv2.MORPH_CLOSE. it is reverse of opening i.e. dilation follwed by erosion. Closing closes the holes/gaps present in the object while keeping the initial object size the same
+* 
 ### <a name="Canny_Edge_Detection_and_Gradients"></a>Canny Edge Detection and Gradients
-* IMREAD_COLOR loads the image in the BGR 8-bit format.
-* IMREAD_UNCHANGED loads the image as is (including the alpha channel if present)
-* IMREAD_GRAYSCALE loads the image as an intensity one
-* cv2.imshow is used to show the image.
-* cv2.waitkey() is used to determine how long should it wait for a user input. It accepts a single parameter in milliseconds. Zero means to wait forever.
+* In Canny Edge Detection, first, it performs noise reduction on the image. Then, it uses the first derivative at each pixel to find edges. The logic behind this is that the point where an edge exists, there is an abrupt intensity change, which causes a spike in the first derivative's value, hence making that pixel an 'edge pixel'. Finally, it performs hysteresis thresholding making use of two threshold values instead of one. The reason behind that is, if the threshold value is too high, we might miss some actual edges (true negatives) and if the value is too low, we would get a lot of points classified as edges that actually are not edges (false positives). One threshold value is set high, and one is set low. All points which are above the 'high threshold value' are identified as edges, then all points which are above the low threshold value but below the high threshold value are evaluated; the points which are close to, or are neighbors of, points which have been identified as edges, are also identified as edges and the rest are discarded.
 
 ### <a name="Template_Matching"></a>Template Matching
 * IMREAD_COLOR loads the image in the BGR 8-bit format.
